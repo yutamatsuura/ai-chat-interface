@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { sendMessage } from '../store/chatSlice';
 
 function InputArea() {
   const [message, setMessage] = useState('');
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // ここでメッセージを送信する処理を追加します
-    console.log('メッセージを送信:', message);
-    setMessage('');
+    if (message.trim()) {
+      dispatch(sendMessage(message));
+      setMessage('');
+    }
   };
 
   return (

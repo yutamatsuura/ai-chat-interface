@@ -1,11 +1,16 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 function MessageList() {
-  // このコンポーネントは後でメッセージの配列を受け取り、表示します
+  const messages = useSelector((state) => state.chat.messages);
+
   return (
     <div className="message-list">
-      {/* メッセージはここに表示されます */}
-      <p>メッセージがここに表示されます。</p>
+      {messages.map((message, index) => (
+        <div key={index} className={`message ${message.role}`}>
+          <strong>{message.role === 'user' ? 'You:' : 'AI:'}</strong> {message.content}
+        </div>
+      ))}
     </div>
   );
 }
