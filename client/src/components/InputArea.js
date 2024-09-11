@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { sendMessage } from '../store/chatSlice';
+import styles from './InputArea.module.css';
 
 function InputArea() {
   const [message, setMessage] = useState('');
@@ -15,7 +16,7 @@ function InputArea() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="input-area">
+    <form onSubmit={handleSubmit} className={styles.inputArea}>
       <input
         type="text"
         value={message}
